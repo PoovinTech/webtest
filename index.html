@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="favicon.png">
+
+  <title>poovin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f8ff;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #333;
+      margin: 0;
+      display: inline-block;
+      border-right: 2px solid; /* Blinking cursor effect */
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 2s steps(30, end) infinite alternate, blink-caret 0.75s step-end infinite;
+    }
+    .emoji {
+      font-size: 4rem;
+      margin: 20px 0;
+    }
+    .message {
+      font-size: 1.5rem;
+      color: #555;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid;
+      width: 0;
+      animation: typing 2s steps(30, end) 2s infinite alternate, blink-caret 0.75s step-end infinite;
+    }
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 105, 180, 0.4), rgba(135, 206, 235, 0.4), rgba(50, 205, 50, 0.4));
+      transition: background 0.2s ease;
+      pointer-events: none;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: black; }
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-30px); }
+      60% { transform: translateY(-15px); }
+    }
+    .emoji {
+      animation: bounce 2s infinite;
+    }
+    body {
+      cursor: crosshair;
+    }
+    .background {
+      animation: none;
+    }
+    @keyframes waterFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    body {
+      background: #f0f8ff;
+      background-size: 200% 200%;
+      animation: waterFlow 10s infinite;
+    }
+    body:hover {
+      background: #ff69b4;
+    }
+    body:hover .background {
+      background: rgba(50, 205, 50, 0.5);
+    }
+    body:hover {
+      cursor: pointer;
+    }
+
+    /* Media query for mobile view */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .emoji {
+        font-size: 3rem;
+      }
+      .message {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <h1>Hey Hi, I am Puvi </h1>
+    <div class="emoji">👋</div>
+    <p class="message">See You Soon!</p>
+  </div>
+  <script>
+    const background = document.querySelector('.background');
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const xPos = (clientX / width) * 100;
+      const yPos = (clientY / height) * 100;
+      background.style.background = `radial-gradient(circle at ${xPos}% ${yPos}%, rgba(255, 105, 180, 0.4), rgba(135, 206, 235, 0.4), rgba(50, 205, 50, 0.4))`;
+    });
+  </script>
+</body>
+</html>
